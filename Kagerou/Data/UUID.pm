@@ -5,12 +5,14 @@ package Kagerou::Data::UUID;
 use Exporter 'import';
 our @EXPORT_OK = qw(uuid);
 
-use UUID 'uuid';
+use UUID;
 
 sub uuid {
-  my $uuid = UUID::uuid;
-  $uuid =~ s/-//g;
-  return uc $uuid;
+  my $uuid, $string;
+  UUID::generate($uuid);
+  UUID::unparse($uuid, $string);  
+  $string =~ s/-//g;
+  return uc $string;
 }
 
 1;
