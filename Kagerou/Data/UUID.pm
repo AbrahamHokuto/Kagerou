@@ -5,7 +5,7 @@ package Kagerou::Data::UUID;
 use Exporter 'import';
 our @EXPORT_OK = qw(uuid);
 
-use UUID;
+use UUID 'uuid';
 
 sub uuid {
   my $uuid = UUID::uuid;
