@@ -8,7 +8,8 @@ our @EXPORT_OK = qw(uuid);
 use UUID;
 
 sub uuid {
-  my $uuid, $string;
+  my $uuid;
+  my $string;
   UUID::generate($uuid);
   UUID::unparse($uuid, $string);  
   $string =~ s/-//g;
