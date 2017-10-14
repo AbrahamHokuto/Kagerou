@@ -1,0 +1,79 @@
+%# -*- mode:html -*-
+% my($sth,$order,$cp,$page,$baseurl) = @_;
+<ul class="nav right">
+  <span>Order by:</span>
+  <li>
+    <a href='<%== "$baseurl/by_changed" %>'>
+      <span>Changed</span>
+    </a>
+  </li>
+  <li>
+    <a href='<%== "$baseurl/by_published" %>'>
+      <span>Published</span>
+    </a>
+  </li>
+  <li>
+    <a href='<%== "$baseurl/by_replies_count" %>'>
+      <span>Replies count</span>
+    </a>
+  </li>
+  <li>
+    <a href='<%== "$baseurl/by_brownian_motion" %>'>
+      <span>Brownian motion</span>
+    </a>
+  </li>
+</ul>
+
+% my $rows = 0;
+
+<div class="list-wrapper">
+  <ul class="thread-list">
+    % while ( my $i = $sth->fetchrow_hashref ) {
+    % ++$rows;
+    <li class="entry">
+      <a href="/thread/view/<%= $i->{tid} %>" class="inner-wrapper">
+	<div class="title">
+	  <h2><%== $i->{title} %></h2>
+	</div>
+	<div class="info">
+	  <div class="reply-wrapper">
+	    <i class="flaticon-comments"></i><span> <%= $i->{reply_count} - 1 %></span>
+	  </div>
+	  <span class="author"><%== $i->{author} %></span>
+	  <span class="datetime"><%== $i->{last_changed} %></span>
+	</div>
+      </a>
+    </li>
+    % }
+  </ul>
+</div>
+
+% if (!$rows) {
+<span style="font-size:24px;color:#ccc;">Nothing Here. Maybe go somewhere else?</span>
+% }
+
+<%
+   my($prev,$next);
+   if($cp == 1) {
+   $prev = 'javascript:;';
+   } else {
+   $prev = ("$baseurl/by_$order/" . ($cp - 1));
+   }
+   if($cp == $page) {
+   $next = 'javascript:;';
+   } else {
+   $next = ("$baseurl/by_$order/" . ($cp + 1));
+   }
+   %>
+
+% if ($page > 1) {
+<ul class="pager">
+  <li class="entry prev">
+    <a href="<%= $prev %>"><span>&lt;</span></a>
+  </li>
+  <span class="page"><%== "$cp/$page" %></span>
+  <li class="entry next">
+    <a href="<%= $next %>"><span>&gt;</span></a>
+  </li>
+</ul>
+% }

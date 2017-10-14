@@ -1,0 +1,51 @@
+.nav {
+    height:40px;
+    border-bottom:5px solid #222;
+    list-style-type:none;
+    padding:0;
+    clear:both;
+    margin:0;
+
+    &.left {
+	text-align:left;
+    }
+
+    &.right {
+	text-align:right;
+    }
+    
+    li {
+	display:inline-block;
+	margin:0;
+	
+	&.active {
+	    background-color:#222;
+
+	    a {
+		color:white;
+	    }
+	}
+	
+	a {
+	    display:block;
+	    height:29px;
+	    color:#222;
+	    text-decoration:none;
+	    text-align:center;
+	    padding:11px 5px 0 5px;
+	    transition:0.2s linear;
+	    
+	    span {
+		transition:0.2s linear;
+	    }
+	    
+	    &:hover {
+		background-color:#222;
+		
+		span {
+		    color:white;
+		}
+	    }
+	}
+    }
+}
