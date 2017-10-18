@@ -24,10 +24,10 @@ use Mojo::Template;
 use Redis::Fast;
 use Encode;
 
-my $DB   = 'ChikyuuForum';
+my $DB   = 'Kagerou';
 my $HOST = 'localhost';
-my $USER = 'forum';
-my $PWD  = 'Richelieu0xC0DEBABA';
+my $USER = 'kagerou';
+my $PWD  = 'Asahi_0x1148989';
 
 my $mysql = DBIx::Connector->new("DBI:mysql:database=$DB:host=$HOST",
 				 $USER,$PWD);
