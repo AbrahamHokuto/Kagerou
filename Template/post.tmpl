@@ -27,7 +27,7 @@
     </div>
   </div>
   % if ($admin) {
-  <a>PID: <%= $pid %></a>
+  <a>PID: <%= $i->{pid} %></a>
   % }
   <div class="content">
     <%= Kagerou::Renderer::render($i->{content},renderer => $i->{renderer}) %>
