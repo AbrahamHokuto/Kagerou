@@ -1,6 +1,10 @@
 %# -*- mode:html -*-
-% my($sth, $cp, $page, $POST_PER_PAGE, $baseurl, $uid, $tid) = @_;
+% my($sth, $cp, $page, $POST_PER_PAGE, $baseurl, $uid, $tid, $admin) = @_;
 % use Kagerou::Renderer;
+
+% if ($admin) {
+<a>TID: <%= $tid =></a>
+% }
 
 % my $floor = 1 + $POST_PER_PAGE*($cp - 1);
 % while ( my $i = $sth->fetchrow_hashref ) {
@@ -22,6 +26,9 @@
       <span><%= $floor %></span>
     </div>
   </div>
+  % if ($admin) {
+  <a>PID: <%= $pid =></a>
+  % }
   <div class="content">
     <%= Kagerou::Renderer::render($i->{content},renderer => $i->{renderer}) %>
   </div>

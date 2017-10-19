@@ -15,7 +15,7 @@ use Kagerou::Response;
 my $POST_PER_PAGE = 30;
 
 sub view {
-  my($req, $mysql, $redis, $tid, $cp) = @_;
+  my($req, $mysql, $redis, $tid, $cp, $admin) = @_;
   my($rp,$rt);
   my $page;
   my $error;
@@ -64,7 +64,7 @@ sub view {
   my $title = $rt->fetchrow_hashref->{title};
   my $inner_page = $tmpl->render_file('Template/post.tmpl', 
 				      $rp, $cp, $page, $POST_PER_PAGE,
-				      "/thread/view/$tid", $uid, $tid);
+				      "/thread/view/$tid", $uid, $tid, $admin);
     
   my $outer_page = base($req, $mysql, 
 			body => $inner_page, 

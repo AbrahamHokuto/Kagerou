@@ -47,7 +47,8 @@ my @ROUTER = (
 	      ['/category/([A-Z0-9]+)/by_([a-z_]+)/([0-9]+)' => \&category],
 
 	      ['/thread/view/([A-Z0-9]+)' => \&view],
-	      ['/thread/view/([A-Z0-9]+)/(\d+)' => \&view],
+              ['/thread/view/([A-Z0-9]+)/(\d+)' => \&view],
+              ['/thread/view/([A-Z0-9]+)/(\d+)/(admin)' => \&view],
 
 	      ['/(thread|post)/edit/([A-F0-9]+)' => \&edit_view],
 
