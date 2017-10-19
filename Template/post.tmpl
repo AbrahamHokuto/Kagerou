@@ -3,7 +3,7 @@
 % use Kagerou::Renderer;
 
 % if ($admin) {
-<a>TID: <%= $tid =></a>
+<a>TID: <%= $tid %></a>
 % }
 
 % my $floor = 1 + $POST_PER_PAGE*($cp - 1);
@@ -27,7 +27,7 @@
     </div>
   </div>
   % if ($admin) {
-  <a>PID: <%= $pid =></a>
+  <a>PID: <%= $pid %></a>
   % }
   <div class="content">
     <%= Kagerou::Renderer::render($i->{content},renderer => $i->{renderer}) %>
