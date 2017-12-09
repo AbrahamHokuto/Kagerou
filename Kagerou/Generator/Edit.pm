@@ -37,7 +37,7 @@ sub edit_view {
 	$pt->execute($oid, $uid);
 
 	$pp = $_->prepare(
-	  'SELECT PostContent.content, PostContent.renderer, COUNT(*) FROM Post '.
+	  'SELECT PostContent.content, PostContent.renderer FROM Post '.
 	    'INNER JOIN PostContent ON PostContent.id = Post.content '.
 	    'WHERE thread = UNHEX(?) and Post.author = UNHEX(?) '.
 	    'ORDER BY Post.datetime LIMIT 1'
