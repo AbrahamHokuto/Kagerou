@@ -40,7 +40,7 @@ sub edit_view {
 	  'SELECT PostContent.content, PostContent.renderer FROM Post '.
 	    'INNER JOIN PostContent ON PostContent.id = Post.content '.
 	    'WHERE thread = UNHEX(?) and Post.author = UNHEX(?) '.
-	    'ORDER BY Post.datetime LIMIT 1'
+	    'ORDER BY Post.datetime, PostContent.datetime DESC LIMIT 1'
 	   );
 	$pp->execute($oid, $uid);
       }
@@ -49,9 +49,10 @@ sub edit_view {
     $mysql->run(
       sub {
 	$pp = $_->prepare(
-	  'SELECT PostContent.content, PostContent.renderer FROM Post '.
+	  'SELECT PostContent.content, PostContent.renderer, PostContent.datetime FROM Post '.
 	    'INNER JOIN PostContent ON PostContent.post = Post.id '.
-	    'WHERE Post.id = UNHEX(?) and Post.author = UNHEX(?) '
+	    'WHERE Post.id = UNHEX(?) and Post.author = UNHEX(?) '.
+	    'ORDER BY PostContent.datetime DESC'
 	   );
 	$pp->execute($oid, $uid);
       });
