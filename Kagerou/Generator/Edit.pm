@@ -49,8 +49,8 @@ sub edit_view {
     $mysql->run(
       sub {
 	$pp = $_->prepare(
-	  'SELECT PostContent.content, PostContent.renderer FROM PostContent '.
-	    'INNER JOIN Post ON PostContent.post = Post.id '.
+	  'SELECT PostContent.content, PostContent.renderer FROM Post '.
+	    'INNER JOIN PostContent ON PostContent.post = Post.id '.
 	    'WHERE Post.id = UNHEX(?) and Post.author = UNHEX(?) '
 	   );
 	$pp->execute($oid, $uid);
