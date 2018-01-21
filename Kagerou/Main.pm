@@ -31,7 +31,7 @@ Kagerou::Config->init('../config.json');
 my $DB   = Kagerou::Config->get("db/name");
 my $HOST = Kagerou::Config->get("db/host");
 my $USER = Kagerou::Config->get("db/user");
-my $PWD  = Kagerou::Config->get("db/password")
+my $PWD  = Kagerou::Config->get("db/password");
 
 my $mysql = DBIx::Connector->new("DBI:mysql:database=$DB:host=$HOST",
 				 $USER,$PWD);
