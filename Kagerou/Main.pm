@@ -25,8 +25,9 @@ use DBIx::Connector;
 use Mojo::Template;
 use Redis::Fast;
 use Encode;
+use Cwd;
 
-Kagerou::Config->init('../config.json');
+Kagerou::Config->init(Cwd::abs_path('config.json'));
 
 my $DB   = Kagerou::Config->get("db/name");
 my $HOST = Kagerou::Config->get("db/host");
@@ -84,7 +85,6 @@ sub router {
 
 sub main {
   my $req = shift;
-  Kagerou::Config->init;
   my $res;
 
   my ($handler, $match) = router($req->path_info);

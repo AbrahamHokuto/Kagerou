@@ -10,7 +10,8 @@ my $config;
 sub init {
     shift;
     my $config_path = shift;
-    $config = Config::JSON->create($config_path);
+    print "$config_path\n";
+    $config = Config::JSON->new($config_path);
 }
 
 sub get {
