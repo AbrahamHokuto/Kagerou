@@ -30,21 +30,21 @@ sub decode_cookie {
   }
 }
 
-# sub encode_admin {
-#   my $uid = shift;
-#   my $secret_key = Kagerou::Config->get('secret_key_admin');
-#   my $sign = sha256_hex($uid ^ $secret_key);
-#   my $cookie = "$uid|$sign";
-#   return $cookie;
-# }
+# # sub encode_admin {
+# #   my $uid = shift;
+# #   my $secret_key = Kagerou::Config->get('secret_key_admin');
+# #   my $sign = sha256_hex($uid ^ $secret_key);
+# #   my $cookie = "$uid|$sign";
+# #   return $cookie;
+# # }
 
-# sub decode_admin {
-#   my $cookie = shift;
-#   my $secret_key = Kagerou::Config->get('secret_key_admin');
-#   my($uid,$sign) = split /\|/,$cookie;
-#   if($sign and $sign eq sha256_hex($uid^$secret_key)) {
-#     return $uid;
-#   }
-}
+# # sub decode_admin {
+# #   my $cookie = shift;
+# #   my $secret_key = Kagerou::Config->get('secret_key_admin');
+# #   my($uid,$sign) = split /\|/,$cookie;
+# #   if($sign and $sign eq sha256_hex($uid^$secret_key)) {
+# #     return $uid;
+# #   }
+# }
 
 1;
