@@ -19,15 +19,19 @@ use Kagerou::Action::Avatar qw(avatar);
 
 use Kagerou::Response;
 
+use Kagerou::Config;
+
 use DBIx::Connector;
 use Mojo::Template;
 use Redis::Fast;
 use Encode;
 
-my $DB   = 'Kagerou';
-my $HOST = 'localhost';
-my $USER = 'kagerou';
-my $PWD  = 'Asahi_0x1148989';
+Kagerou::Config->init('../config.json');
+
+my $DB   = Kagerou::Config->get("db/name");
+my $HOST = Kagerou::Config->get("db/host");
+my $USER = Kagerou::Config->get("db/user");
+my $PWD  = Kagerou::Config->get("db/password")
 
 my $mysql = DBIx::Connector->new("DBI:mysql:database=$DB:host=$HOST",
 				 $USER,$PWD);

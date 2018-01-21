@@ -101,5 +101,4 @@ sub render_markdown {
     return $rendered;
 }
 
-
 1;

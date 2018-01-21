@@ -3,24 +3,25 @@ use warnings;
 
 package Kagerou::Config;
 
-use Redis::Fast;
+use Config::JSON;
 
-my $redis;
+my $config;
 
 sub init {
-  $redis = Redis::Fast->new;
+    shift;
+    my $config_path = shift;
+    $config = COnfig::JSON->create($config_path);
 }
 
 sub get {
   shift;
-  my $key = shift;
-  $redis->get("config:$key");
+  $config->get(shift);
 }
 
 sub set {
   shift;
   my ($key, $val) = @_;
-  $redis->set("config:$key" => "$val");
+  $config->set($key, $val);
 }
 
 1;
