@@ -1,0 +1,10 @@
+{
+    "db": {
+	"name": "Kagerou",
+	"host": "localhost",
+	"user": "root",
+	"password": ""
+    },
+    "avatar_path": "usr/local/www/kagerou/avatar",
+    "cookie_salt": "some_random_string"
+}
